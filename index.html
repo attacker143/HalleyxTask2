@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <html>
+<head>
+  <title>ER Model Visualizer</title>
+</head>
+<body>
+  <h1>ER Model Visualizer</h1>
+  
+  <form>
+    <h2>Define Entities:</h2>
+    <div id="entities">
+      <div class="entity">
+        <h3>Entity Name: <input type="text" name="entity_name"></h3>
+        <h4>Attributes:</h4>
+        <table>
+          <tr>
+            <th>Attribute Name</th>
+            <th>Data Type</th>
+            <th>Primary Key</th>
+            <th>Foreign Key</th>
+          </tr>
+          <tr>
+            <td><input type="text" name="attribute_name"></td>
+            <td>
+              <select name="data_type">
+                <option value="string">String</option>
+                <option value="integer">Integer</option>
+              </select>
+            </td>
+            <td><input type="radio" name="primary_key"></td>
+            <td><input type="checkbox" name="foreign_key"></td>
+          </tr>
+        </table>
+      </div>
+      <!-- Add button to add more entities -->
+      <button type="button" id="add_entity">Add Entity</button>
+    </div>
+    <!-- Submit button to show final output -->
+    <input type="submit" value="Show Output">
+  </form>
+  
+  <!-- Placeholder for final output -->
+  <div id="output"></div>
+  
+
+</body>
+</html>
+
+<script>
+    // Get the first entity element
+    let entity = document.querySelector('.entity');
+    
+    // Add functionality to add more entities
+    document.querySelector('#add_entity').addEventListener('click', function() {
+      // Clone the first entity
+      let newEntity = entity.cloneNode(true);
+      
+      // Clear the values in the new entity
+      newEntity.querySelectorAll('input[type="text"], select').forEach(function(element) {
+        element.value = "";
+      });
+      newEntity.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(function(element) {
+        element.checked = false;
+      });
+      
+      // Append the new entity to the entities section
+      document.querySelector('#entities').appendChild(newEntity);
+    });
+  </script>
+        
+        
+    </body>
+</html>
